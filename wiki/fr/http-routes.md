@@ -90,12 +90,14 @@ Toutes ces classes appartiennent à l'espace de noms `oihana\routes\http`.
 | `DeleteAllRoute` | `DELETE`   | `deleteAll`                                          |
 | `OptionsRoute`   | `OPTIONS`  | — (voir ci-dessous)                                  |
 | `ListRoute`      | `GET`      | `list`                                               |
+| `SearchRoute`    | `GET`      | `search`                                             |
 
 Remarques :
 
 - `DeleteAllRoute` étend `DeleteRoute` et ne surcharge que `INTERNAL_METHOD` vers `deleteAll`. Elle enregistre toujours un verbe `DELETE` — typiquement sur l'URL d'une collection (par exemple `DELETE /users` pour supprimer toutes les ressources, par opposition à `DELETE /users/{id}` pour une seule).
 - `ListRoute` étend `GetRoute` et ne surcharge que `INTERNAL_METHOD` vers `list`. Elle enregistre toujours un verbe `GET`.
 - `OptionsRoute` est particulière : elle étend directement [`Route`](routes.md) plutôt que `HttpMethodRoute`. Elle n'appelle **pas** de méthode de contrôleur ; elle enregistre à la place une route Slim `options()` à l'aide du helper `responsePassthrough`, qui retourne la réponse telle quelle (généralement modifiée par un middleware CORS pour les requêtes preflight).
+- `SearchRoute` étend `GetRoute` et ne surcharge que `INTERNAL_METHOD` vers `search`. Elle enregistre toujours un verbe `GET` — typiquement sur l'URL d'une collection (par exemple `GET /users/search`) pour exécuter une recherche côté serveur, par opposition à `ListRoute` qui liste toute la collection.
 
 ## Surcharge de la méthode
 

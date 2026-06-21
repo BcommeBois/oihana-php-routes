@@ -90,12 +90,14 @@ All classes live in the `oihana\routes\http` namespace.
 | `DeleteAllRoute` | `DELETE`  | `deleteAll`                                   |
 | `OptionsRoute`   | `OPTIONS` | — (see below)                                 |
 | `ListRoute`      | `GET`     | `list`                                        |
+| `SearchRoute`    | `GET`     | `search`                                      |
 
 Notes:
 
 - `DeleteAllRoute` extends `DeleteRoute` and only overrides `INTERNAL_METHOD` to `deleteAll`. It still registers a `DELETE` verb — typically on a collection URL (e.g. `DELETE /users` to remove all resources, versus `DELETE /users/{id}` for a single one).
 - `ListRoute` extends `GetRoute` and only overrides `INTERNAL_METHOD` to `list`. It still registers a `GET` verb.
 - `OptionsRoute` is special: it extends [`Route`](routes.md) directly rather than `HttpMethodRoute`. It does **not** dispatch to a controller method; instead it registers a Slim `options()` route using the `responsePassthrough` helper, which returns the response untouched (typically modified by CORS middleware for preflight requests).
+- `SearchRoute` extends `GetRoute` and only overrides `INTERNAL_METHOD` to `search`. It still registers a `GET` verb — typically on a collection URL (e.g. `GET /users/search`) to run a server-side search, as opposed to `ListRoute` which lists the whole collection.
 
 ## Custom method override
 

@@ -22,7 +22,9 @@ built on [Slim](https://www.slimframework.com/).
   - `Route` — the composable base route wired to a PSR-11 container.
   - `http\HttpMethodRoute` and the per-verb route classes `http\GetRoute`,
     `http\PostRoute`, `http\PutRoute`, `http\PatchRoute`, `http\DeleteRoute`,
-    `http\DeleteAllRoute`, `http\OptionsRoute`, `http\ListRoute`.
+    `http\DeleteAllRoute`, `http\OptionsRoute`, `http\ListRoute`,
+    `http\SearchRoute` (a `GET` route dispatching to the controller's
+    `search()` method, like `ListRoute` for `list()`).
   - `DocumentRoute` and `I18nRoute` — higher-level document and localized routes.
   - `traits\HasRouteTrait` and `traits\HttpMethodRoutesTrait` — route
     registration helpers.
