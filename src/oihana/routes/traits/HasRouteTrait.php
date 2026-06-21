@@ -6,6 +6,19 @@ use oihana\routes\enums\RouteFlag;
 use oihana\routes\Route;
 use function oihana\core\bits\hasFlag;
 
+/**
+ * Adds route-flag management to a route definition.
+ *
+ * This trait stores the {@see RouteFlag} bitmask describing which HTTP routes
+ * are enabled and exposes a convenient API to query it (`hasGet()`, `hasPost()`,
+ * ...), describe it in a human-readable form and mutate it (`enableFlags()`,
+ * `disableFlags()`). The bitmask can be initialized from a raw integer or from
+ * a legacy boolean-array configuration through {@see HasRouteTrait::initializeFlags()}.
+ *
+ * @package oihana\routes\traits
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
+ */
 trait HasRouteTrait
 {
     /**
@@ -16,8 +29,10 @@ trait HasRouteTrait
 
     /**
      * Initialize the internal flags.
-     * @param array|int $init
-     * @return static
+     *
+     * @param array|int $init A raw bitmask, an init array carrying a `flags`
+     *                        integer, or a legacy boolean-array configuration.
+     * @return static Returns the current instance for method chaining.
      */
     public function initializeFlags( array|int $init = [] ) :static
     {
@@ -40,6 +55,8 @@ trait HasRouteTrait
 
     /**
      * Check if COUNT route is enabled
+     *
+     * @return bool `true` if the COUNT route is enabled, `false` otherwise.
      */
     public function hasCount(): bool
     {
@@ -48,6 +65,8 @@ trait HasRouteTrait
 
     /**
      * Check if DELETE route is enabled
+     *
+     * @return bool `true` if the DELETE route is enabled, `false` otherwise.
      */
     public function hasDelete(): bool
     {
@@ -56,6 +75,8 @@ trait HasRouteTrait
 
     /**
      * Check if DELETE_MULTIPLE is enabled
+     *
+     * @return bool `true` if the DELETE_MULTIPLE route is enabled, `false` otherwise.
      */
     public function hasDeleteMultiple(): bool
     {
@@ -64,6 +85,8 @@ trait HasRouteTrait
 
     /**
      * Check if GET route is enabled
+     *
+     * @return bool `true` if the GET route is enabled, `false` otherwise.
      */
     public function hasGet(): bool
     {
@@ -72,6 +95,8 @@ trait HasRouteTrait
 
     /**
      * Check if LIST route is enabled
+     *
+     * @return bool `true` if the LIST route is enabled, `false` otherwise.
      */
     public function hasList(): bool
     {
@@ -80,6 +105,8 @@ trait HasRouteTrait
 
     /**
      * Check if PATCH route is enabled
+     *
+     * @return bool `true` if the PATCH route is enabled, `false` otherwise.
      */
     public function hasPatch(): bool
     {
@@ -88,6 +115,8 @@ trait HasRouteTrait
 
     /**
      * Check if POST route is enabled
+     *
+     * @return bool `true` if the POST route is enabled, `false` otherwise.
      */
     public function hasPost(): bool
     {
@@ -96,6 +125,8 @@ trait HasRouteTrait
 
     /**
      * Check if PUT route is enabled
+     *
+     * @return bool `true` if the PUT route is enabled, `false` otherwise.
      */
     public function hasPut(): bool
     {
@@ -116,7 +147,7 @@ trait HasRouteTrait
      * Enable specific route flags
      *
      * @param int $flags Flags to enable
-     * @return static
+     * @return static Returns the current instance for method chaining.
      */
     public function enableFlags( int $flags ) :static
     {
@@ -128,7 +159,7 @@ trait HasRouteTrait
      * Disable specific route flags
      *
      * @param int $flags Flags to disable
-     * @return static
+     * @return static Returns the current instance for method chaining.
      */
     public function disableFlags( int $flags ) :static
     {

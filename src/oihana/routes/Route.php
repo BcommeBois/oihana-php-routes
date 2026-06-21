@@ -22,6 +22,20 @@ use function oihana\core\arrays\isAssociative;
 
 /**
  * Represents a route definition and handles route creation and execution.
+ *
+ * A `Route` is the base building block of the routing layer: it stores the
+ * route pattern, its name (prefix/suffix), the associated controller identifier
+ * and an optional set of nested route definitions. Invoking the instance walks
+ * the nested definitions and registers each resolved route, while {@see Route::create()}
+ * turns a plain definition array into a concrete route object.
+ *
+ * Subclasses such as {@see oihana\routes\http\HttpMethodRoute} and
+ * {@see DocumentRoute} specialize this behaviour for individual HTTP verbs or
+ * full CRUD resources.
+ *
+ * @package oihana\routes
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 class Route
 {
@@ -41,10 +55,10 @@ class Route
      *  - 'suffix': Optional suffix for route name.
      *  - 'verbose': Optional verbose mode (default true).
      *
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @throws DependencyException If a dependency cannot be resolved by the container.
+     * @throws NotFoundException If the requested entry is not found in the container.
+     * @throws ContainerExceptionInterface If the container encounters an error while retrieving an entry.
+     * @throws NotFoundExceptionInterface If no entry was found in the container for the given identifier.
      */
     public function __construct( Container $container , array $init = [] )
     {
@@ -153,8 +167,10 @@ class Route
     /**
      * Invokes all nested routes if defined.
      *
-     * @throws DependencyException
-     * @throws NotFoundException
+     * @return void
+     *
+     * @throws DependencyException If a dependency cannot be resolved by the container.
+     * @throws NotFoundException If the requested entry is not found in the container.
      */
     public function __invoke(): void
     {

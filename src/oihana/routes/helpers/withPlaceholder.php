@@ -53,6 +53,9 @@ use function oihana\core\strings\betweenBrackets;
  * // -> '/user-{id}'
  * ```
  *
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
+ * @package oihana\routes\helpers
  */
 function withPlaceholder
 (

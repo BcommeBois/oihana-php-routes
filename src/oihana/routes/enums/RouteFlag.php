@@ -5,6 +5,32 @@ namespace oihana\routes\enums;
 use oihana\reflect\traits\ConstantsTrait;
 use function oihana\core\bits\hasFlag;
 
+/**
+ * Bitmask flags describing which HTTP routes a resource exposes.
+ *
+ * Each constant (`COUNT`, `DELETE`, `GET`, `LIST`, `PATCH`, `POST`, `PUT`, ...)
+ * represents an individual route that can be toggled independently, and several
+ * convenient presets are provided (`DEFAULT`, `READ_ONLY`, `WRITE`, `CRUD`).
+ * Flags are combined with the bitwise OR operator and inspected through the
+ * helper methods of this class.
+ *
+ * The class also bridges the legacy boolean-array configuration format to the
+ * modern bitmask via {@see RouteFlag::convertLegacyArray()}.
+ *
+ * @example
+ * ```php
+ * use oihana\routes\enums\RouteFlag;
+ *
+ * $mask = RouteFlag::GET | RouteFlag::POST;
+ *
+ * RouteFlag::has( $mask , RouteFlag::GET ); // true
+ * RouteFlag::describe( $mask );             // "GET, POST"
+ * ```
+ *
+ * @package oihana\routes\enums
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
+ */
 class RouteFlag
 {
     use ConstantsTrait ;

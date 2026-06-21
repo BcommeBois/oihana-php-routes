@@ -30,10 +30,10 @@ abstract class HttpMethodRoute extends Route
      * Creates a new MethodRoute instance.
      * @param Container $container The DI Container reference.
      * @param array $init The optional settings object.
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @throws DependencyException If a dependency cannot be resolved by the container.
+     * @throws NotFoundException If the requested entry is not found in the container.
+     * @throws ContainerExceptionInterface If the container encounters an error while retrieving an entry.
+     * @throws NotFoundExceptionInterface If no entry was found in the container for the given identifier.
      */
     public function __construct( Container $container , array $init = [] )
     {
@@ -56,8 +56,8 @@ abstract class HttpMethodRoute extends Route
 
     /**
      * Initialize the internal method property.
-     * @param array $init
-     * @return $this
+     * @param array $init The initialization array, optionally carrying a `method` override.
+     * @return $this Returns the current instance for method chaining.
      */
     public function initializeMethod( array $init = [] ):static
     {
@@ -70,8 +70,10 @@ abstract class HttpMethodRoute extends Route
      *
      * Validates the controller/method and calls the `registerRoute` template method.
      *
-     * @throws DependencyException
-     * @throws NotFoundException
+     * @return void
+     *
+     * @throws DependencyException If a dependency cannot be resolved by the container.
+     * @throws NotFoundException If the requested entry is not found in the container.
      */
     public function __invoke(): void
     {
