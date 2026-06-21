@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<section class="phpdocumentor-section">
+
+<a href="https://github.com/BcommeBois/oihana-php-routes" class="phpdocumentor-title__link">
+    <img src="assets/images/oihana-php-routes-logo-inline-512x160.png" alt="Oihana PHP Routes" style="width: 256px; height: 80px;"/>
+</a>
+
+</br>
+
+<p>Declarative, composable HTTP route definitions for PHP 8.4+, built on Slim.</p>
+
+<h3>📚 Documentation</h3>
+<p>Narrative user guides (FR + EN), with examples:</p>
+<ul>
+    <li>🇬🇧 <a href="https://github.com/BcommeBois/oihana-php-routes/blob/main/wiki/en/README.md" target="_blank">English documentation</a></li>
+    <li>🇫🇷 <a href="https://github.com/BcommeBois/oihana-php-routes/blob/main/wiki/fr/README.md" target="_blank">Documentation française</a></li>
+</ul>
+<p>You are currently browsing the auto-generated API reference (phpDocumentor).</p>
+
+<h3>🚀 Features</h3>
+<ul>
+    <li>🧭 A composable <code>Route</code> base and per-verb route classes — <code>GetRoute</code>, <code>PostRoute</code>, <code>PutRoute</code>, <code>PatchRoute</code>, <code>DeleteRoute</code>, <code>OptionsRoute</code>, <code>ListRoute</code>.</li>
+    <li>📄 Higher-level routes — <code>DocumentRoute</code> and <code>I18nRoute</code> for documents and localized paths.</li>
+    <li>🚩 Declarative route options via the <code>RouteFlag</code> bit flags.</li>
+    <li>🧩 Route registration helpers — <code>HttpMethodRoutesTrait</code>, <code>HasRouteTrait</code>, plus <code>withPlaceholder()</code> and <code>responsePassthrough()</code>.</li>
+    <li>🔗 Built on Slim and wired through a PSR-11 container.</li>
+    <li>🧪 100% unit-test line coverage.</li>
+</ul>
+
+<h3>📦 Installation</h3>
+<p>This library requires <a href="https://php.net/releases/" target="_blank">PHP 8.4+</a> and is installed via <a href="https://getcomposer.org/" target="_blank">Composer</a>:</p>
+<pre class="language-bash prettyprint">composer require oihana/php-routes</pre>
+
+<h3>🧾 License</h3>
+<p>This project is licensed under the <strong><a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License 2.0 (MPL-2.0)</a></strong>.</p>
+
+<h3>👤 About the Author</h3>
+<ul>
+    <li><strong>Name:</strong> Marc ALCARAZ (aka <em>eKameleon</em>)</li>
+    <li><strong>Website:</strong> <a href="https://www.ooop.fr" target="_blank">www.ooop.fr</a></li>
+    <li><strong>Email:</strong> <a href="mailto:marc@ooop.fr">marc@ooop.fr</a></li>
+</ul>
+
+<h3>🔗 Related packages</h3>
+<ul>
+    <li><a href="https://github.com/BcommeBois/oihana-php-controllers" target="_blank">oihana/php-controllers</a> — the HTTP controllers the routes dispatch to (provides <code>AppTrait</code>).</li>
+    <li><a href="https://github.com/BcommeBois/oihana-php-core" target="_blank">oihana/php-core</a> — core helpers and utilities used by this library.</li>
+    <li><a href="https://github.com/BcommeBois/oihana-php-enums" target="_blank">oihana/php-enums</a> — strongly-typed constant enumerations (HTTP methods, etc.).</li>
+</ul>
+
+<h3>🔗 Project on GitHub</h3>
+<p>View the full source code and contribute on GitHub:
+    <a href="https://github.com/BcommeBois/oihana-php-routes" target="_blank">github.com/BcommeBois/oihana-php-routes</a>.
+</p>
+
+</section>
+{% endblock %}
